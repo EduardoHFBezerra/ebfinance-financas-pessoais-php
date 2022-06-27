@@ -2,9 +2,6 @@
 session_start();
 include("classes/class.Conexao.php");
 include("classes/class.Usuario.php");
-
-    // Instância de usuário
-    $usu = new Usuario();
     
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome    = trim($_POST["nome"]);
@@ -28,6 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erros)) {
+        // Instância de usuário
+        $usu = new Usuario();
         $retorno = $usu->inserirUsuario($nome, $usuario, $senha);
     } else {
         foreach ($erros as $erro) {
