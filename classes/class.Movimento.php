@@ -51,7 +51,7 @@ class Movimento extends Conexao
     }
 
     // Somar movimento geral (receita ou despesa)
-    function somaMovimento($tipo)
+    public function somaMovimento($tipo)
     {
         $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND id_usuario_movimento = :id_usuario_movimento");
         $consulta->bindValue(":tipo", $tipo, PDO::PARAM_STR);
@@ -72,7 +72,7 @@ class Movimento extends Conexao
     }
 
     // Inserir novo movimento
-    function inserirMovimento($descricao, $data, $tipo, $valor, $formaPagamento, $categoria)
+    public function inserirMovimento($descricao, $data, $tipo, $valor, $formaPagamento, $categoria)
     {
         $inserir = $this->con()->prepare("INSERT INTO movimento (descricao, data, tipo, valor, forma_pagamento, categoria, id_usuario_movimento) VALUES (:descricao, :data, :tipo, :valor, :forma_pagamento, :categoria, :id_usuario_movimento)");
         $inserir->bindValue(":descricao", $descricao, PDO::PARAM_STR);
@@ -101,7 +101,7 @@ class Movimento extends Conexao
     }
 
     // Deletar movimento
-    function deletarMovimento($id)
+    public function deletarMovimento($id)
     {
         $deletar = $this->con()->prepare("DELETE FROM movimento WHERE id_movimento = :id_movimento AND id_usuario_movimento = :id_usuario_movimento");
         $deletar->bindValue(":id_movimento", $id, PDO::PARAM_INT);
