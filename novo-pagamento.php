@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($erros)) {
         // Instância de usuário
         $usu = new Usuario();
-        $retorno = $usu->adicionarPagamento($conexao, $pagamento);
+        $retorno = $usu->adicionarPagamento($pagamento);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

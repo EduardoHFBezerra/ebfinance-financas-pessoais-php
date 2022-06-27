@@ -7,8 +7,6 @@ include("inc/cabecalho.php");
 
 // Instância de usuário
 $usu = new Usuario();
-// Instância de movimento
-$mov = new Movimento();
 ?>
 <div class="row">
 	<div class="column">

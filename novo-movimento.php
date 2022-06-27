@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($erros)) {
         // Instância de movimento
         $mov = new Movimento();
-        $retorno = $mov->inserirMovimento($conexao, $descricao, $dataReceita, $tipo, $valor, $formaPagamento, $categoria);
+        $retorno = $mov->inserirMovimento($descricao, $dataReceita, $tipo, $valor, $formaPagamento, $categoria);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

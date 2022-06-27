@@ -85,7 +85,7 @@ class Movimento extends Conexao
         try
         {
             $inserir->execute();
-            if ($this->con()->lastInsertId() > 0)
+            if ($inserir->rowCount() > 0)
             {
                 return "Novo movimento inserido com sucesso";
             }

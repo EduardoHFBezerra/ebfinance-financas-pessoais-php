@@ -99,7 +99,7 @@ class Usuario extends Conexao
     // Adicionar nova forma de pagamento
     public function adicionarPagamento($pagamento)
     {
-        $listaPagamentos = listaPagamentos(); // Lista de pagamentos
+        $listaPagamentos = $this->listaPagamentos(); // Lista de pagamentos
         $prossegue = true;
         foreach ($listaPagamentos as $chave => $item)
         {
@@ -143,7 +143,7 @@ class Usuario extends Conexao
     // Remover forma de pagamento
     public function removerPagamento($pagamento)
     {
-        $listaPagamentos = listaPagamentos();
+        $listaPagamentos = $this->listaPagamentos();
         foreach ($listaPagamentos as $chave => $item)
         {
             // Verificar se é o pagamento informado
@@ -199,7 +199,7 @@ class Usuario extends Conexao
     // Adicionar nova categoria
     public function adicionarCategoria($categoria, $tipo)
     {
-        $listaCategorias = listaCategorias(); // Lista de categorias
+        $listaCategorias = $this->listaCategorias(); // Lista de categorias
         $prossegue = true;
         foreach ($listaCategorias as $chave => $item)
         {
@@ -244,7 +244,7 @@ class Usuario extends Conexao
     // Remover categoria
     public function removerCategoria($categoria, $tipo)
     {
-        $listaCategorias = listaCategorias();
+        $listaCategorias = $this->listaCategorias();
         foreach ($listaCategorias as $chave => $item)
         {
             // Verificar se é a categoria informada

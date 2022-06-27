@@ -9,7 +9,7 @@ if (isset($_GET["pagamento"])) {
 
     // Instância de usuário
     $usu = new Usuario();
-    $retorno = $usu->removerPagamento($conexao, $pagamento);
+    $retorno = $usu->removerPagamento($pagamento);
     
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;
