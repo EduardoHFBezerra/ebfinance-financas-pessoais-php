@@ -47,7 +47,7 @@ class Usuario extends Conexao
     public function inserirUsuario($nome, $usuario, $senha)
     {
         // Verificar se usuário não existe antes de inserí-lo
-        if (!checaDuplicidadeUsuario($usuario))
+        if (!$this->checaDuplicidadeUsuario($usuario))
         {
             $inserir = $this->con()->prepare("INSERT INTO usuario (nome, usuario, senha) VALUES (:nome, :usuario, :senha)");
             $inserir->bindValue(":nome", $nome, PDO::PARAM_STR);
@@ -56,7 +56,7 @@ class Usuario extends Conexao
             try
             {
                 $inserir->execute();
-                if ($this->con()->lastInsertId() > 0)
+                if ($inserir->rowCount() > 0)
                 {
                     return "Usuário inserido com sucesso! você já pode logar no sistema";
                 }
