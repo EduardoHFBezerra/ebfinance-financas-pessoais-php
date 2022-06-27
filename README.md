@@ -6,7 +6,7 @@ Sistema de finanças pessoal em PHP + Semantic UI + MySQL
 
 Este projeto começou como algo pessoal para controle de finanças. O sistema é bem simples, porém ele cumpre o que promete de maneira eficaz.
 
-Versão 1.0
+Versão 1.0.1
 
 ### FUNCIONALIDADES
 - [X] Login
