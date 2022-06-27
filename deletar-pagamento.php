@@ -1,13 +1,15 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 if (isset($_GET["pagamento"])) {
     $pagamento = $_GET["pagamento"];
     $retorno   = "";
 
-    $retorno = removerPagamento($conexao, $pagamento);
+    // Instância de usuário
+    $usu = new Usuario();
+    $retorno = $usu->removerPagamento($conexao, $pagamento);
     
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;

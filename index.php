@@ -1,8 +1,9 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-movimento.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
+include("classes/class.Movimento.php");
+
 include("inc/funcoes.php");
 
 include("inc/cabecalho.php");
@@ -11,6 +12,11 @@ include("inc/cabecalho.php");
 $dataAtual = new DateTime();
 $mes = isset($_GET["mes"]) ? $_GET["mes"] : $dataAtual->format("m");
 $ano = isset($_GET["ano"]) ? $_GET["ano"] : $dataAtual->format("Y");
+
+// Instância de usuário
+$usu = new Usuario();
+// Instância de movimento
+$mov = new Movimento();
 ?>
 
 <div class="row">
@@ -63,9 +69,9 @@ $ano = isset($_GET["ano"]) ? $_GET["ano"] : $dataAtual->format("Y");
                 </div>
                 <div class="meta">
                     <?php
-                    $somaReceitaMes = somaMovimentoMes($conexao, "receita", $mes, $ano); // Soma do mês de receitas
-                    $somaDespesaMes = somaMovimentoMes($conexao, "despesa", $mes, $ano); // Soma do mês de despesas
-                    $resultadoMes   = $somaReceitaMes - $somaDespesaMes;
+                    $somaReceitaMes = $mov->somaMovimentoMes("receita", $mes, $ano); // Soma do mês de receitas
+                    $somaDespesaMes = $mov->somaMovimentoMes("despesa", $mes, $ano); // Soma do mês de despesas
+                    $resultadoMes   = $somaReceitaMes-$somaDespesaMes;
                     ?>
                     Receitas: <?php echo formataDinheiro($somaReceitaMes); ?> - Despesas: <?php echo formataDinheiro($somaDespesaMes); ?>
                 </div>
@@ -84,8 +90,8 @@ $ano = isset($_GET["ano"]) ? $_GET["ano"] : $dataAtual->format("Y");
                 </div>
                 <div class="meta">
                     <?php
-                    $somaReceitaGeral = somaMovimento($conexao, "receita"); // Soma geral de receitas
-                    $somaDespesaGeral = somaMovimento($conexao, "despesa"); // Soma geral de despesas
+                    $somaReceitaGeral = $mov->somaMovimento("receita"); // Soma geral de receitas
+                    $somaDespesaGeral = $mov->somaMovimento("despesa"); // Soma geral de despesas
                     $resultadoGeral   = $somaReceitaGeral - $somaDespesaGeral;
                     ?>
                     Receitas: <?php echo formataDinheiro($somaReceitaGeral); ?> - Despesas: <?php echo formataDinheiro($somaDespesaGeral); ?>
@@ -125,7 +131,7 @@ $ano = isset($_GET["ano"]) ? $_GET["ano"] : $dataAtual->format("Y");
             </thead>
             <tbody>
                 <?php
-                $movimentos = listaMovimentos($conexao, $mes, $ano);
+                $movimentos = $mov->listaMovimentos($mes, $ano);
                 if (!empty($movimentos)) {
                     foreach ($movimentos as $chave => $item) {
                 ?>

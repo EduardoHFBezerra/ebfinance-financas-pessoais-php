@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("inc/conexao.php");
 
 $url = "login";
 include("inc/cabecalho.php");

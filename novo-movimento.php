@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-movimento.php");
+include("classes/class.Conexao.php");
+include("classes/class.Movimento.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricao      = $_POST["descricao"];
@@ -51,7 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erros)) {
-        $retorno = inserirMovimento($conexao, $descricao, $dataReceita, $tipo, $valor, $formaPagamento, $categoria);
+        // Instância de movimento
+        $mov = new Movimento();
+        $retorno = $mov->inserirMovimento($conexao, $descricao, $dataReceita, $tipo, $valor, $formaPagamento, $categoria);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

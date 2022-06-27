@@ -1,13 +1,15 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-movimento.php");
+include("classes/class.Conexao.php");
+include("classes/class.Movimento.php");
 
 if (isset($_GET["id"])) {
     $id        = $_GET["id"];
     $retorno   = "";
 
-    $retorno = deletarMovimento($conexao, $id);
+    // Instância de movimento
+    $mov = new Movimento();
+    $retorno = $mov->deletarMovimento($id);
     
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria = $_POST["categoria"];
@@ -20,7 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erros)) {
-        $retorno = adicionarCategoria($conexao, $categoria, $tipo);
+        // Instância de usuário
+        $usu = new Usuario();
+        $retorno = $usu->adicionarCategoria($categoria, $tipo);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

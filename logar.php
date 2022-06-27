@@ -1,14 +1,16 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["usuario"];
     $senha   = md5($_POST["senha"]);
     $retorno = "";
 
-    $retorno = login($conexao, $usuario, $senha);
+    // Instância de usuário
+    $usu = new Usuario();
+    $retorno = $usu->login($usuario, $senha);
     if (!empty($retorno)) {
         foreach ($retorno as $chave => $item) {
             $_SESSION["logado"]     = "ok";

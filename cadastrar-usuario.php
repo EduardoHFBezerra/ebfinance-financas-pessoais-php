@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome    = trim($_POST["nome"]);
@@ -25,7 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erros)) {
-        $retorno = inserirUsuario($conexao, $nome, $usuario, $senha);
+        // Instância de usuário
+        $usu = new Usuario();
+        $retorno = $usu->inserirUsuario($conexao, $nome, $usuario, $senha);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

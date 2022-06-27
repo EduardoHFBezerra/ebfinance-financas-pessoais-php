@@ -1,9 +1,14 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 include("inc/cabecalho.php");
+
+// Instância de usuário
+$usu = new Usuario();
+// Instância de movimento
+$mov = new Movimento();
 ?>
 <div class="row">
 	<div class="column">
@@ -42,7 +47,7 @@ include("inc/cabecalho.php");
 			</thead>
 			<tbody>
 				<?php
-				$pagamentos = listaPagamentos($conexao);
+				$pagamentos = $usu->listaPagamentos();
 				if (!empty($pagamentos)) {
 					foreach ($pagamentos as $chave => $item) {
 				?>
@@ -84,7 +89,7 @@ include("inc/cabecalho.php");
 			</thead>
 			<tbody>
 				<?php
-				$categoriasReceita = listaCategorias($conexao);
+				$categoriasReceita = $usu->listaCategorias();
 				if (!empty($categoriasReceita)) {
 					foreach ($categoriasReceita as $chave => $item) {
 						if ($item["tipo"] == "receita") {
@@ -128,7 +133,7 @@ include("inc/cabecalho.php");
 			</thead>
 			<tbody>
 				<?php
-				$categoriasDespesa = listaCategorias($conexao);
+				$categoriasDespesa = $usu->listaCategorias();
 				if (!empty($categoriasDespesa)) {
 					foreach ($categoriasDespesa as $chave => $item) {
 						if ($item["tipo"] == "despesa") {

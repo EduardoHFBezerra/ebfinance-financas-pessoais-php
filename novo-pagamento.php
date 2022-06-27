@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("inc/conexao.php");
-include("inc/banco-usuario.php");
+include("classes/class.Conexao.php");
+include("classes/class.Usuario.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pagamento = $_POST["forma_pagamento"];
@@ -15,7 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erros)) {
-        $retorno = adicionarPagamento($conexao, $pagamento);
+        // Instância de usuário
+        $usu = new Usuario();
+        $retorno = $usu->adicionarPagamento($conexao, $pagamento);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";

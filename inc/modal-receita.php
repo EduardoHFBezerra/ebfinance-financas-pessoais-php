@@ -21,7 +21,7 @@
             					<select class="ui search dropdown" name="categoria">
             						<option value="" selected disabled>Selecione</option>
             						<?php
-									$categoriasReceita = listaCategorias($conexao);
+									$categoriasReceita = $usu->listaCategorias();
 									foreach ($categoriasReceita as $chave => $item) {
 										if ($item["tipo"] == "receita") {
 									?>
@@ -37,7 +37,7 @@
             					<select class="ui search dropdown" name="forma_pagamento">
             						<option value="" selected disabled>Selecione</option>
             						<?php
-									$pagamentos = listaPagamentos($conexao);
+									$pagamentos = $usu->listaPagamentos();
 									foreach ($pagamentos as $chave => $item) {
 									?>
             							<option value="<?php echo $item["pagamento"]; ?>"><?php echo $item["pagamento"]; ?></option>
