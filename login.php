@@ -2,7 +2,7 @@
 session_start();
 
 $url = "login";
-include("inc/cabecalho.php");
+require_once("inc/cabecalho.php");
 ?>
 
 <div class="row">
@@ -40,11 +40,11 @@ include("inc/cabecalho.php");
     </div>
 </div>
 <?php
-include("inc/scripts.php");
+require_once("inc/scripts.php");
 ?>
 <!-- login js -->
 <script src="js/login.js"></script>
 <!-- login js -->
 <?php
-include("inc/rodape.php");
+require_once("inc/rodape.php");
 ?>

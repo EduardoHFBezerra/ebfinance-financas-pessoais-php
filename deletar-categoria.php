@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("classes/class.Conexao.php");
-include("classes/class.Usuario.php");
+require_once("autoload.php");
 
 if (isset($_GET["categoria"]) && isset($_GET["tipo"])) {
     $categoria = $_GET["categoria"];

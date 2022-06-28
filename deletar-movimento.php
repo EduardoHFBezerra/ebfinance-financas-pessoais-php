@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("classes/class.Conexao.php");
-include("classes/class.Movimento.php");
+require_once("autoload.php");
 
 if (isset($_GET["id"])) {
     $id        = $_GET["id"];

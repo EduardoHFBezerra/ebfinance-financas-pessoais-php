@@ -1,9 +1,8 @@
 <?php
 session_start();
-include("classes/class.Conexao.php");
-include("classes/class.Usuario.php");
+require_once("autoload.php");
 
-include("inc/cabecalho.php");
+require_once("inc/cabecalho.php");
 
 // Instância de usuário
 $usu = new Usuario();
@@ -167,15 +166,15 @@ $usu = new Usuario();
 	</div>
 </div>
 <?php
-include("inc/modal-pagamento.php");
-include("inc/modal-categoria-receita.php");
-include("inc/modal-categoria-despesa.php");
+require_once("inc/modal-pagamento.php");
+require_once("inc/modal-categoria-receita.php");
+require_once("inc/modal-categoria-despesa.php");
 
-include("inc/scripts.php");
+require_once("inc/scripts.php");
 ?>
 <!-- configurações js -->
 <script src="js/configuracoes.js"></script>
 <!-- configurações js -->
 <?php
-include("inc/rodape.php");
+require_once("inc/rodape.php");
 ?>

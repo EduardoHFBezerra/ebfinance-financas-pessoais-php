@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("classes/class.Conexao.php");
-include("classes/class.Usuario.php");
+require_once("autoload.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pagamento = $_POST["forma_pagamento"];

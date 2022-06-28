@@ -1,12 +1,10 @@
 <?php
 session_start();
-include("classes/class.Conexao.php");
-include("classes/class.Usuario.php");
-include("classes/class.Movimento.php");
+require_once("autoload.php");
 
-include("inc/funcoes.php");
+require_once("inc/funcoes.php");
 
-include("inc/cabecalho.php");
+require_once("inc/cabecalho.php");
 
 // Data e hora atual
 $dataAtual = new DateTime();
@@ -177,10 +175,10 @@ $mov = new Movimento();
     </div>
 </div>
 <?php
-include("inc/modal-receita.php");
-include("inc/modal-despesa.php");
+require_once("inc/modal-receita.php");
+require_once("inc/modal-despesa.php");
 
-include("inc/scripts.php");
+require_once("inc/scripts.php");
 ?>
 <!-- jQuery Mask Plugin -->
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
@@ -200,5 +198,5 @@ include("inc/scripts.php");
     }
 </script>
 <?php
-include("inc/rodape.php");
+require_once("inc/rodape.php");
 ?>

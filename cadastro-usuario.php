@@ -2,7 +2,7 @@
 session_start();
 
 $url = "cadastro";
-include("inc/cabecalho.php");
+require_once("inc/cabecalho.php");
 ?>
 
 <div class="row">
@@ -52,11 +52,11 @@ include("inc/cabecalho.php");
     </div>
 </div>
 <?php
-include("inc/scripts.php");
+require_once("inc/scripts.php");
 ?>
 <!-- cadastro js -->
 <script src="js/cadastro.js"></script>
 <!-- cadastro js -->
 <?php
-include("inc/rodape.php");
+require_once("inc/rodape.php");
 ?>
