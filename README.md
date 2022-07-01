@@ -2,11 +2,11 @@
 Sistema de finanças pessoal em PHP + Semantic UI + MySQL
 
 ### PÁGINA PRINCIPAL
-<img src="https://user-images.githubusercontent.com/107374370/175829473-be012890-bc82-46e5-b7de-0aea3e1b1a32.png"/>
+<img src="https://user-images.githubusercontent.com/107374370/176886043-41dcb17a-67a4-4737-9de3-63586f4639ae.png"/>
 
 Este projeto começou como algo pessoal para controle de finanças. O sistema é bem simples, porém ele cumpre o que promete de maneira eficaz.
 
-Versão 1.0.2
+Versão 1.1.0
 
 ### FUNCIONALIDADES
 - [X] Login

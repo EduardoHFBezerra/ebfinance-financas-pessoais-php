@@ -8,7 +8,7 @@ require_once("inc/cabecalho.php");
 <div class="row">
     <div class="ui one column stackable center aligned page grid">
         <div class="six wide column">
-            <h2 class="ui violet image header">
+            <h2 class="ui image header">
                 <img src="imagens/piggy.png" class="image">
                 <div class="content">Login EB Finance</div>
             </h2>
@@ -27,7 +27,7 @@ require_once("inc/cabecalho.php");
                                 <input type="password" name="senha" placeholder="Senha" />
                             </div>
                         </div>
-                        <button class="ui violet fluid labeled icon button" type="submit" name="login">
+                        <button class="ui teal fluid labeled icon button" type="submit" name="login">
                             <i class="unlock alternate icon"></i> Entrar
                         </button>
                     </form>

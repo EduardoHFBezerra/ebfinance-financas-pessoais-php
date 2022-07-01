@@ -31,7 +31,7 @@ if (!empty($url) && ($url == "login" || $url == "cadastro")) {
 	?>
     <!-- navegação topo -->
     <div class="ui padded grid">
-        <div class="ui top fixed borderless violet large inverted menu">
+        <div class="ui top fixed borderless large inverted menu">
             <div class="ui container">
                 <a class="header item" href="/">EB Finance</a>
     		    <div class="right menu">
@@ -58,7 +58,7 @@ if (!empty($url) && ($url == "login" || $url == "cadastro")) {
         <!-- mensagem de retorno -->
         <div class="row">
 		   <div class="column">
-			    <div class="ui violet message"><?php echo $_SESSION["retorno"]; ?></div>
+			    <div class="ui teal message"><?php echo $_SESSION["retorno"]; ?></div>
 			</div>
 		</div>
         <!-- mensagem de retorno -->

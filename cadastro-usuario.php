@@ -8,7 +8,7 @@ require_once("inc/cabecalho.php");
 <div class="row">
     <div class="ui one column stackable center aligned page grid">
         <div class="six wide column">
-            <h2 class="ui violet image header">
+            <h2 class="ui image header">
                 <img src="imagens/piggy.png" class="image">
                 <div class="content">Cadastro EB Finance</div>
             </h2>
@@ -39,7 +39,7 @@ require_once("inc/cabecalho.php");
                                 <input type="password" name="confirma_senha" placeholder="Confirmar senha" />
                             </div>
                         </div>
-                        <button class="ui violet labeled icon button" type="submit" name="cadastro">
+                        <button class="ui teal fluid labeled icon button" type="submit" name="cadastro">
                             <i class="sign-in icon"></i> Cadastrar
                         </button>
                     </form>

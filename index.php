@@ -35,7 +35,7 @@ $mov = new Movimento();
 
     <!-- Menu de meses -->
     <div class="fourteen wide column">
-        <div class="ui large twelve item stackable violet secondary pointing menu">
+        <div class="ui large twelve item stackable black secondary pointing menu">
             <?php
             $meses = mesExtenso();
             $contadorMes = 0;
@@ -56,45 +56,65 @@ $mov = new Movimento();
     </div>
 </div>
 <div class="row">
-    <div class="eight wide column">
-        <div class="ui fluid card">
-            <div class="content">
-                <div class="ui right floated header violet">
-                    <i class="icon arrow alternate circle down outline"></i>
-                </div>
-                <div class="header">
-                    <div class="ui violet header">Receitas e Despesas deste mês</div>
-                </div>
-                <div class="meta">
-                    <?php
-                    $somaReceitaMes = $mov->somaMovimentoMes("receita", $mes, $ano); // Soma do mês de receitas
-                    $somaDespesaMes = $mov->somaMovimentoMes("despesa", $mes, $ano); // Soma do mês de despesas
-                    $resultadoMes   = $somaReceitaMes-$somaDespesaMes;
-                    ?>
-                    Receitas: <?php echo formataDinheiro($somaReceitaMes); ?> - Despesas: <?php echo formataDinheiro($somaDespesaMes); ?>
-                </div>
-                <div class="description">Resultado: <?php echo formataDinheiro($resultadoMes); ?></div>
+    <div class="four wide column">
+        <div class="ui green top attached center aligned segment">
+            <div class="ui tiny horizontal statistic">
+                <?php
+                    $receitaMes = $mov->calculaMovimentosMes("receita", $mes, $ano);
+                ?>
+                <div class="value"><?php echo formataDinheiro($receitaMes); ?></div>
+            </div>
+        </div>
+        <div class="ui green bottom attached segment">
+            <div class="ui grid">
+                <div class="thirteen wide column">Receitas do mês</div>
+                <div class="three wide column"><i class="large green icon arrow alternate circle up outline"></i></div>
             </div>
         </div>
     </div>
-    <div class="eight wide column">
-        <div class="ui fluid card">
-            <div class="content">
-                <div class="ui right floated header teal">
-                    <i class="icon money bill alternate"></i>
-                </div>
-                <div class="header">
-                    <div class="ui teal header">Balanço geral</div>
-                </div>
-                <div class="meta">
-                    <?php
-                    $somaReceitaGeral = $mov->somaMovimento("receita"); // Soma geral de receitas
-                    $somaDespesaGeral = $mov->somaMovimento("despesa"); // Soma geral de despesas
-                    $resultadoGeral   = $somaReceitaGeral - $somaDespesaGeral;
-                    ?>
-                    Receitas: <?php echo formataDinheiro($somaReceitaGeral); ?> - Despesas: <?php echo formataDinheiro($somaDespesaGeral); ?>
-                </div>
-                <div class="description">Resultado: <?php echo formataDinheiro($resultadoGeral); ?></div>
+    <div class="four wide column">
+        <div class="ui red top attached center aligned segment">
+            <div class="ui tiny horizontal statistic">
+                <?php
+                    $despesaMes = $mov->calculaMovimentosMes("despesa", $mes, $ano);
+                ?>
+                <div class="value"><?php echo formataDinheiro($despesaMes); ?></div>
+            </div>
+        </div>
+        <div class="ui red bottom attached segment">
+            <div class="ui grid">
+                <div class="thirteen wide column">Despesas do mês</div>
+                <div class="three wide column"><i class="large red icon arrow alternate circle down outline"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="ui teal top attached center aligned segment">
+            <div class="ui tiny horizontal statistic">
+                <div class="value"><?php echo formataDinheiro($receitaMes-$despesaMes); ?></div>
+            </div>
+        </div>
+        <div class="ui teal bottom attached segment">
+            <div class="ui grid">
+                <div class="thirteen wide column">Balanço do mês</div>
+                <div class="three wide column"><i class="large teal icon dollar sign"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="ui yellow top attached center aligned segment">
+            <div class="ui tiny horizontal statistic">
+                <?php
+                    $receitaGeral = $mov->calculaMovimentos("receita");
+                    $despesaGeral = $mov->calculaMovimentos("despesa");
+                ?>
+                <div class="value"><?php echo formataDinheiro($receitaGeral-$despesaGeral); ?></div>
+            </div>
+        </div>
+        <div class="ui yellow bottom attached segment">
+            <div class="ui grid">
+                <div class="thirteen wide column">Balanço geral</div>
+                <div class="three wide column"><i class="large yellow icon dollar sign"></i></div>
             </div>
         </div>
     </div>
@@ -115,7 +135,7 @@ $mov = new Movimento();
 </div>
 <div class="row">
     <div class="column">
-        <table id="movimentos" class="ui violet compact striped table">
+        <table id="movimentos" class="ui black compact striped table">
             <thead>
                 <tr>
                     <th>Descrição</th>

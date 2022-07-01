@@ -28,8 +28,8 @@ class Movimento extends Conexao
         }
     }
 
-    // Somar movimento do mês (receita ou despesa)
-    public function somaMovimentoMes($tipo, $mes, $ano)
+    // Calcular movimentos do mês (receita ou despesa)
+    public function calculaMovimentosMes($tipo, $mes, $ano)
     {
         $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND YEAR(data) = :ano AND MONTH(data) = :mes AND id_usuario_movimento = :id_usuario_movimento");
         $consulta->bindValue(":tipo", $tipo, PDO::PARAM_STR);
@@ -51,8 +51,8 @@ class Movimento extends Conexao
         }
     }
 
-    // Somar movimento geral (receita ou despesa)
-    public function somaMovimento($tipo)
+    // Calcular movimentos em geral
+    public function calculaMovimentos($tipo)
     {
         $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND id_usuario_movimento = :id_usuario_movimento");
         $consulta->bindValue(":tipo", $tipo, PDO::PARAM_STR);

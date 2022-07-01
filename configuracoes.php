@@ -9,7 +9,7 @@ $usu = new Usuario();
 ?>
 <div class="row">
 	<div class="column">
-		<h3 class="ui dividing header violet">
+		<h3 class="ui dividing header black">
 			<i class="settings icon"></i>
 			<div class="content">
 				Configurações
@@ -35,7 +35,7 @@ $usu = new Usuario();
 </div>
 <div class="three column row">
 	<div class="column">
-		<table class="ui violet compact striped table">
+		<table class="ui black compact striped table">
 			<thead>
 				<tr>
 					<th>Formas de pagamento</th>
@@ -77,7 +77,7 @@ $usu = new Usuario();
 		</table>
 	</div>
 	<div class="column">
-		<table class="ui violet compact striped table">
+		<table class="ui black compact striped table">
 			<thead>
 				<tr>
 					<th>Categorias de receita</th>
@@ -121,7 +121,7 @@ $usu = new Usuario();
 		</table>
 	</div>
 	<div class="column">
-		<table class="ui violet compact striped table">
+		<table class="ui black compact striped table">
 			<thead>
 				<tr>
 					<th>Categorias de despesa</th>
