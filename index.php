@@ -144,6 +144,7 @@ $mov = new Movimento();
                     <th>Categoria</th>
                     <th>Tipo</th>
                     <th>Pagamento</th>
+                    <th>Pago</th>
                     <th></th>
                 </tr>
             </thead>
@@ -175,10 +176,16 @@ $mov = new Movimento();
                             <td>
                                 <?php echo $item["forma_pagamento"]; ?>
                             </td>
+                            <td>
+                                <?php echo $item["pago"] == "s" ? "<i class='check green icon'></i>" : "<i class='x red icon'></i>"; ?>
+                            </td>
                             <td class="right aligned">
-                                <div class="ui icon top left pointing dropdown mini button">
+                                <div class="ui icon top right pointing dropdown mini button">
                                     <i class="dropdown icon"></i>
                                     <div class="menu">
+                                        <a class="item" href="marcar-movimento.php?pago=<?php echo $item["pago"] == "s" ? "n" : "s"; ?>&id=<?php echo $item["id_movimento"]; ?>">
+                                            <i class="dollar sign icon"></i><?php echo $item["pago"] == "s" ? "Não pago" : "Pago"; ?>
+                                        </a>
                                         <a class="item" href="deletar-movimento.php?id=<?php echo $item["id_movimento"]; ?>">
                                             <i class="trash icon"></i>Deletar
                                         </a>

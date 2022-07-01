@@ -13,5 +13,5 @@ if (isset($_GET["pagamento"])) {
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;
     
-    header("Location: configuracoes.php");
+    header("Location:  " . $_SERVER["HTTP_REFERER"]);
 }

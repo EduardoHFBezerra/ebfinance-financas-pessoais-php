@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $formaPagamento = $_POST["forma_pagamento"];
     $valor          = number_format(str_replace(",", ".", str_replace(".", "", $_POST['valor'])), 2, ".", "");
     $tipo           = $_POST["tipo"];
+    $pago           = isset($_POST["pago"]) ? "s" : "n";
     $erros          = array();
     $retorno        = "";
 
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($erros)) {
         // Instância de movimento
         $mov = new Movimento();
-        $retorno = $mov->inserirMovimento($descricao, $dataReceita, $tipo, $valor, $formaPagamento, $categoria);
+        $retorno = $mov->inserirMovimento($descricao, $dataReceita, $tipo, $pago, $valor, $formaPagamento, $categoria);
     } else {
         foreach ($erros as $erro) {
            $retorno = $erro . "<br>";
@@ -62,5 +63,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;
 
-    header("Location: index.php?mes=" . $data->format("m") . "&ano=" . $data->format("Y"));
+    header("Location: /?mes=" . $data->format("m") . "&ano=" . $data->format("Y"));
 }

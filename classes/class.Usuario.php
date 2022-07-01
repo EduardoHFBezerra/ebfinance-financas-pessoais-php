@@ -119,13 +119,13 @@ class Usuario extends Conexao
             ));
             // Converter os pagamentos para string e codificar caracteres Unicode
             $pagamentos = json_encode($listaPagamentos, JSON_UNESCAPED_UNICODE);
-            $adicionar = $this->con()->prepare("UPDATE usuario SET formas_pagamento = :formas_pagamento WHERE id_usuario = :id_usuario");
-            $adicionar->bindValue(":formas_pagamento", $pagamentos, PDO::PARAM_STR);
-            $adicionar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
+            $alterar = $this->con()->prepare("UPDATE usuario SET formas_pagamento = :formas_pagamento WHERE id_usuario = :id_usuario");
+            $alterar->bindValue(":formas_pagamento", $pagamentos, PDO::PARAM_STR);
+            $alterar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
             try
             {
-                $adicionar->execute();
-                if ($adicionar->rowCount() > 0)
+                $alterar->execute();
+                if ($alterar->rowCount() > 0)
                 {
                     return "Pagamento adicionado com sucesso";
                 }
@@ -156,13 +156,13 @@ class Usuario extends Conexao
         }
         // Converter os pagamentos para string, realocar numa Array, e codificar caracteres Unicode
         $pagamentos = json_encode(array_values($listaPagamentos) , JSON_UNESCAPED_UNICODE);
-        $remover = $this->con()->prepare("UPDATE usuario SET formas_pagamento = :formas_pagamento WHERE id_usuario = :id_usuario");
-        $remover->bindValue(":formas_pagamento", $pagamentos, PDO::PARAM_STR);
-        $remover->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
+        $alterar = $this->con()->prepare("UPDATE usuario SET formas_pagamento = :formas_pagamento WHERE id_usuario = :id_usuario");
+        $alterar->bindValue(":formas_pagamento", $pagamentos, PDO::PARAM_STR);
+        $alterar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
         try
         {
-            $remover->execute();
-            if ($remover->rowCount() > 0)
+            $alterar->execute();
+            if ($alterar->rowCount() > 0)
             {
                 return "Pagamento removido com sucesso";
             }
@@ -220,13 +220,13 @@ class Usuario extends Conexao
             ));
             // Converter as categorias para string e codificar caracteres Unicode
             $categorias = json_encode($listaCategorias, JSON_UNESCAPED_UNICODE);
-            $adicionar = $this->con()->prepare("UPDATE usuario SET categorias = :categorias WHERE id_usuario = :id_usuario");
-            $adicionar->bindValue(":categorias", $categorias, PDO::PARAM_STR);
-            $adicionar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
+            $alterar = $this->con()->prepare("UPDATE usuario SET categorias = :categorias WHERE id_usuario = :id_usuario");
+            $alterar->bindValue(":categorias", $categorias, PDO::PARAM_STR);
+            $alterar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
             try
             {
-                $adicionar->execute();
-                if ($adicionar->rowCount() > 0)
+                $alterar->execute();
+                if ($alterar->rowCount() > 0)
                 {
                     return "Categoria adicionada com sucesso";
                 }
@@ -257,13 +257,13 @@ class Usuario extends Conexao
         }
         // Converter as categorias para string, realocar numa Array, e codificar caracteres Unicode
         $categorias = json_encode(array_values($listaCategorias) , JSON_UNESCAPED_UNICODE);
-        $remover = $this->con()->prepare("UPDATE usuario SET categorias = :categorias WHERE id_usuario = :id_usuario");
-        $remover->bindValue(":categorias", $categorias, PDO::PARAM_STR);
-        $remover->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
+        $alterar = $this->con()->prepare("UPDATE usuario SET categorias = :categorias WHERE id_usuario = :id_usuario");
+        $alterar->bindValue(":categorias", $categorias, PDO::PARAM_STR);
+        $alterar->bindValue(":id_usuario", $_SESSION["id_usuario"], PDO::PARAM_INT);
         try
         {
-            $remover->execute();
-            if ($remover->rowCount() > 0)
+            $alterar->execute();
+            if ($alterar->rowCount() > 0)
             {
                 return "Categoria removida com sucesso";
             }

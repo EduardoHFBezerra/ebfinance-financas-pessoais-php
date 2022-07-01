@@ -31,7 +31,7 @@ class Movimento extends Conexao
     // Calcular movimentos do mês (receita ou despesa)
     public function calculaMovimentosMes($tipo, $mes, $ano)
     {
-        $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND YEAR(data) = :ano AND MONTH(data) = :mes AND id_usuario_movimento = :id_usuario_movimento");
+        $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND YEAR(data) = :ano AND MONTH(data) = :mes AND pago = 's' AND id_usuario_movimento = :id_usuario_movimento");
         $consulta->bindValue(":tipo", $tipo, PDO::PARAM_STR);
         $consulta->bindValue(":ano", $ano, PDO::PARAM_STR);
         $consulta->bindValue(":mes", $mes, PDO::PARAM_STR);
@@ -54,7 +54,7 @@ class Movimento extends Conexao
     // Calcular movimentos em geral
     public function calculaMovimentos($tipo)
     {
-        $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND id_usuario_movimento = :id_usuario_movimento");
+        $consulta = $this->con()->prepare("SELECT SUM(valor) AS total FROM movimento WHERE tipo = :tipo AND pago = 's' AND id_usuario_movimento = :id_usuario_movimento");
         $consulta->bindValue(":tipo", $tipo, PDO::PARAM_STR);
         $consulta->bindValue(":id_usuario_movimento", $_SESSION["id_usuario"], PDO::PARAM_INT);
         try
@@ -73,12 +73,13 @@ class Movimento extends Conexao
     }
 
     // Inserir novo movimento
-    public function inserirMovimento($descricao, $data, $tipo, $valor, $formaPagamento, $categoria)
+    public function inserirMovimento($descricao, $data, $tipo, $pago, $valor, $formaPagamento, $categoria)
     {
-        $inserir = $this->con()->prepare("INSERT INTO movimento (descricao, data, tipo, valor, forma_pagamento, categoria, id_usuario_movimento) VALUES (:descricao, :data, :tipo, :valor, :forma_pagamento, :categoria, :id_usuario_movimento)");
+        $inserir = $this->con()->prepare("INSERT INTO movimento (descricao, data, tipo, pago, valor, forma_pagamento, categoria, id_usuario_movimento) VALUES (:descricao, :data, :tipo, :pago, :valor, :forma_pagamento, :categoria, :id_usuario_movimento)");
         $inserir->bindValue(":descricao", $descricao, PDO::PARAM_STR);
         $inserir->bindValue(":data", $data, PDO::PARAM_STR);
         $inserir->bindValue(":tipo", $tipo, PDO::PARAM_STR);
+        $inserir->bindValue(":pago", $pago, PDO::PARAM_STR);
         $inserir->bindValue(":valor", $valor, PDO::PARAM_STR);
         $inserir->bindValue(":forma_pagamento", $formaPagamento, PDO::PARAM_STR);
         $inserir->bindValue(":categoria", $categoria, PDO::PARAM_STR);
@@ -93,6 +94,31 @@ class Movimento extends Conexao
             else
             {
                 return "Houve um erro ao tentar inserir um novo movimento, tente novamente";
+            }
+        }
+        catch(PDOExecption $e)
+        {
+            return "Erro!: " . $e->getMessage();
+        }
+    }
+
+    // Marcar movimento
+    public function marcarMovimento($pago, $id)
+    {
+        $alterar = $this->con()->prepare("UPDATE movimento SET pago = :pago WHERE id_movimento = :id_movimento AND id_usuario_movimento = :id_usuario_movimento");
+        $alterar->bindValue(":pago", $pago, PDO::PARAM_STR);
+        $alterar->bindValue(":id_movimento", $id, PDO::PARAM_INT);
+        $alterar->bindValue(":id_usuario_movimento", $_SESSION["id_usuario"], PDO::PARAM_INT);
+        try
+        {
+            $alterar->execute();
+            if ($alterar->rowCount() > 0)
+            {
+                return "Movimento marcado com sucesso";
+            }
+            else
+            {
+                return "Houve um erro ao tentar marcar o movimento, tente novamente";
             }
         }
         catch(PDOExecption $e)

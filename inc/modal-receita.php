@@ -6,13 +6,20 @@
             		<form id="form-receita" action="novo-movimento.php" method="post" class="ui form">
             			<input type="hidden" name="tipo" value="receita" />
             			<div class="three fields">
-            				<div class="twelve wide field">
+            				<div class="ten wide field">
             					<label>Descrição</label>
             					<input type="text" name="descricao" placeholder="Informe a descrição da receita" />
             				</div>
-            				<div class="six wide field">
+            				<div class="four wide field">
             					<label>Data da receita</label>
             					<input type="date" name="data" />
+            				</div>
+            				<div class="four wide field">
+            					<label>Pago</label>
+            					<div class="ui toggle checkbox">
+                                    <input type="checkbox" name="pago" />
+                                    <label></label>
+                                </div>
             				</div>
             			</div>
             			<div class="three fields">

@@ -36,5 +36,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sessão que retorna a mensagem final
     $_SESSION["retorno"] = $retorno;
 
-    header("Location: cadastro-usuario.php");
+    header("Location:  " . $_SERVER["HTTP_REFERER"]);
 }
