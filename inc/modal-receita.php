@@ -18,7 +18,7 @@
             					<label>Pago</label>
             					<div class="ui toggle checkbox">
                                     <input type="checkbox" name="pago" />
-                                    <label></label>
+                                    <label>Está pago?</label>
                                 </div>
             				</div>
             			</div>
