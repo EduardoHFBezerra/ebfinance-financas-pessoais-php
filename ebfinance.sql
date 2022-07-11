@@ -32,6 +32,7 @@ CREATE TABLE `movimento` (
   `id_movimento` int(11) NOT NULL,
   `descricao` varchar(100) NOT NULL,
   `data` date NOT NULL,
+  `pago` char(1) NOT NULL,
   `tipo` char(7) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `valor` decimal(10,2) NOT NULL,
   `forma_pagamento` varchar(100) NOT NULL,
