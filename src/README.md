@@ -30,3 +30,14 @@ Versão 1.1.1
   <li>Importe o arquivo ebfinance.sql em seu banco MySQL</li>
   <li>Modifique o arquivo inc/conexao.php com o seu usuário e senha de acesso ao banco</li>
 </ul>
+
+### COMO UTILIZAR EM DOCKER
+# EXECUTE O COMANDO ABAIXO PARA RODA O AMBIENTE NO DOCKER-COMPOSE
+```
+docker-compose up -d
+```
+<ul>
+  <li>Acesse o phpmyadmin em localhost:8080</li>
+  <li>Importe o arquivo ebfinance.sql em seu banco MySQL</li>
+  <li>Modifique o arquivo inc/conexao.php com o seu usuário e senha de acesso ao banco</li>
+</ul>
