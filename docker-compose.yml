@@ -1,0 +1,33 @@
+version: "3"
+services:
+    php:
+        build:
+            context: ./src # Indica onde está o arquivo Dockerfile
+            dockerfile: Dockerfile
+        container_name: ambiente-estudo-php # Apelido para o container
+        volumes:
+            - ./src:/var/www/html/ # Irá copiar o conteúdo da pasta src para o container
+        ports: # Mapear as portas para ficarem visiveis na máquina host
+            - "8081:80"
+    db:
+           image: mysql:5.6
+           container_name: banco-ambiente # Apelido para o container
+           ports:
+           - "3306:3306"
+           volumes:
+           - data:/var/lib/mysql
+           environment:
+           - MYSQL_ROOT_PASSWORD=root
+           - MYSQL_DATABASE=finan
+    app:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: phpmyadmin-ambiente # Apelido para o container
+        links:
+        - db
+        ports:
+        - 8080:80
+        environment:
+        - PMA_ARBITRARY=1
+
+volumes:
+  data:

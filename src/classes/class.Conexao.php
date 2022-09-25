@@ -4,10 +4,10 @@ class Conexao
 {
 
     // Dados de conexão com o banco de dados
-    private $servidor = "localhost";
-    private $banco = "ebfinance";
+    private $servidor = "db";
+    private $banco = "finan";
     private $usuario = "root";
-    private $senha = "nautico1901";
+    private $senha = "root";
     public $conexao;
 
     // Conexão com o banco de dados
