@@ -7,6 +7,9 @@
 -- Versão do servidor: 8.0.17
 -- versão do PHP: 7.3.10
 
+
+CREATE SCHEMA `ebfinance` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
